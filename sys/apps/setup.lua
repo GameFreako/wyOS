@@ -41,11 +41,36 @@ local function awaitInput(prein, type)
     if event == "key" then
         if keys.getName(key) == "enter" then
             if #input > 0 then
-                screen.setCursorBlink(false)
-                screen.clearLine()
-                screen.setCursorPos(1, sy)
-                screen.write(">")
-                return input
+                if type == "bool" then
+                    if input == "true" then
+                        screen.setCursorBlink(false)
+                        screen.clearLine()
+                        screen.setCursorPos(1, sy)
+                        screen.write(">")
+                        return true
+                    elseif input == "false" then
+                        screen.setCursorBlink(false)
+                        screen.clearLine()
+                        screen.setCursorPos(1, sy)
+                        screen.write(">")
+                        return false
+                    else
+                        screen.setCursorPos(1, sy)
+                        screen.setTextColor(colors.red)
+                        screen.write("> ")
+                        sleep(1)
+                        screen.setCursorPos(1, sy)
+                        screen.clearLine()
+                        screen.setTextColor(colors.white)
+                        screen.write("> ")
+                    end
+                else
+                    screen.setCursorBlink(false)
+                    screen.clearLine()
+                    screen.setCursorPos(1, sy)
+                    screen.write(">")
+                    return input
+                end
             else
                 screen.setCursorPos(1, sy)
                 screen.setTextColor(colors.red)
