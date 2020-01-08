@@ -13,7 +13,9 @@ end
 print("please wait")
 sleep(2)
 
-multishell.launch({}, "/rom/programs/shell.lua")
+local shellid = multishell.launch({}, "/rom/programs/shell.lua")
+multishell.setFocus(shellid)
+multishell.setTitle(shellid, "Terminal")
 multishell.setTitle(multishell.getCurrent(), "Logout")
 
 while true do
