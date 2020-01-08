@@ -13,8 +13,6 @@ while true do
     end
 end
 
-multishell.setTitle(1, "Starting...")
-
 -- load apis
 --os.loadAPI("/sys/apis/jua")
 --os.loadAPI("/sys/apis/k.lua")
@@ -40,16 +38,16 @@ end
 
 if monitorMode == 3 then
     if options["setup"] == true then
-        multishell.launch({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
+        os.run({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
     else
-        multishell.launch({}, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
+        os.run({}, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
     end
     os.queueEvent("terminate")
 else
     if options["setup"] == true then
-        multishell.launch({}, "/sys/apps/home.lua")
+        os.run({}, "/sys/apps/home.lua")
     else
-        multishell.launch({}, "/sys/apps/setup.lua")
+        os.run({}, "/sys/apps/setup.lua")
     end
     os.queueEvent("terminate")
 end

@@ -14,7 +14,9 @@ settings.load(".wyos")
 
 sleep(1)
 
-multishell.setTitle(multishell.getFocus(), "Setup")
+if multishell then
+    multishell.setTitle(multishell.getFocus(), "Setup")
+end
 
 local sx, sy = screen.getSize();
 
