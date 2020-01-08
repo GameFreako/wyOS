@@ -3,9 +3,9 @@
 -- Scripts in the autorun folder run in the background, but the tab closes when they terminate. 
 
 print("press C to disable wyOS boot")
-os.startTimer(5)
+os.startTimer(5000)
 while true do
-    local event, a1, a2 = os.pullEvent()
+    local event, a1, a2 = os.pullEvent("")
     if (event == "char" and a1 == "c") then
         os.queueEvent("terminate")
     elseif (event == "timer")

@@ -12,12 +12,15 @@ end
 -- but is also the network manager, and does general things for the operating system.
 print("please wait")
 sleep(2)
+
 local multishell = _G.multishell
 
-local shellid = multishell.launch({}, "/rom/programs/shell.lua")
-multishell.setFocus(shellid)
-multishell.setTitle(shellid, "Terminal")
-multishell.setTitle(multishell.getCurrent(), "Logout")
+local shellid = os.run({}, "/rom/programs/shell.lua")
+if multishell then
+    multishell.setFocus(shellid)
+    multishell.setTitle(shellid, "Terminal")
+    multishell.setTitle(multishell.getCurrent(), "Logout")
+end
 
 while true do
     local event, arg1, arg2, arg3, arg4 = os.pullEvent()
