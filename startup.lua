@@ -8,7 +8,7 @@ while true do
     local event, a1, a2 = os.pullEvent("")
     if (event == "char" and a1 == "c") then
         os.queueEvent("terminate")
-    elseif (event == "timer")
+    elseif (event == "timer") then
         break
     end
 end
