@@ -10,7 +10,8 @@ end
 
 -- this is how there is a logout button in multishell
 -- but is also the network manager, and does general things for the operating system.
-multishell = multishell
+print("please wait")
+sleep(2)
 
 multishell.launch({}, "/rom/programs/shell.lua")
 multishell.setTitle(multishell.getCurrent(), "Logout")

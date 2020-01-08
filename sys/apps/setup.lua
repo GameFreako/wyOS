@@ -112,14 +112,15 @@ if settings.get("monitormode") == true then
     typeOut("What is the ID of the monitor?", 0.5)
     settings.set("monitor", awaitInput(nil, "int"))
 end
-typeOut("Would you like to restart setup? You can access this at any time by typing 'setup' in the shell.", 1.5)
+typeOut("Would you like to restart setup?", 1.5)
 local restart = awaitInput(nil, "bool")
 if restart then
     settings.save(".wyos")
-    multishell.launch({}, "/sys/apps/setup.lua")
-    multishell.closeTab(multishell.currentTab())
+    os.run({}, "/sys/apps/setup.lua")
+    os.queueEvent("terminate")
 else
     settings.set("setup", true)
     settings.save(".wyos")
-    multishell.closeTab(mulishell.currentTab())
+    os.run({}, "/sys/apps/home.lua")
+    os.queueEvent("terminate")
 end
