@@ -61,6 +61,7 @@ local function awaitInput(prein, type)
                         sleep(1)
                         screen.setCursorPos(1, sy)
                         screen.clearLine()
+                        input = ""
                         screen.setTextColor(colors.white)
                         screen.write("> ")
                     end
@@ -78,6 +79,7 @@ local function awaitInput(prein, type)
                 sleep(1)
                 screen.setCursorPos(1, sy)
                 screen.clearLine()
+                input = ""
                 screen.setTextColor(colors.white)
                 screen.write("> ")
             end
