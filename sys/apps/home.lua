@@ -13,18 +13,14 @@ end
 print("please wait")
 sleep(2)
 
-local shellid = os.run({}, "/rom/programs/shell.lua")
-if multishell then
-    multishell.setFocus(shellid)
-    multishell.setTitle(shellid, "Terminal")
-    multishell.setTitle(multishell.getCurrent(), "Logout")
-end
-
 while true do
+    local tid = os.setTimer(5)
     local event, arg1, arg2, arg3, arg4 = os.pullEvent()
-    if (event == "term_click") then
+    if event == "term_click" then
         if (multishell.getFocus() == multishell.getCurrent()) then
             logout()
         end
+    elseif event == "timer" and arg1 == tid then
+
     end
 end

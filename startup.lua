@@ -20,6 +20,7 @@ end
 --os.loadAPI("/sys/apis/r.lua")
 os.loadAPI("/sys/apis/sha256.lua")
 os.loadAPI("/sys/apis/core.lua")
+os.loadAPI("/rom/programs/multishell.lua")
 
 
 options = {}
@@ -39,9 +40,15 @@ end
 
 if monitorMode == 3 then
     if options["setup"] == true then
-        multishell.launch({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
+        multishell.launch({
+            ["shell"] = shell,
+            ["multishell"] = multishell
+        }, "/sys/apps/home.lua", "MONITOR", options["monitor"])
     else
-        multishell.launch({}, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
+        multishell.launch({
+            ["shell"] = shell,
+            ["multishell"] = multishell
+        }, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
     end
     os.queueEvent("terminate")
 else
