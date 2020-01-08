@@ -7,7 +7,11 @@ if args[1] == "MONITOR" then
 else
     screen = term
 end
-require("/sys/apis/sha256.lua")
+if require then
+    require("/sys/apis/sha256.lua")
+else
+    os.loadAPI("/sys/apis/sha256.lua")
+end
 
 settings.load(".wyos")
 
