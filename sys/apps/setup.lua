@@ -68,7 +68,6 @@ local function awaitInput(prein, type)
     elseif event == "char" then
         input = input..key
         if type == "password" then
-            input = input..key
             local cx, cy = screen.getCursorPos()
             if cx > 3 then
                 screen.setCursorPos(cx-1, cy)
@@ -76,6 +75,8 @@ local function awaitInput(prein, type)
             else
                 screen.write(key)
             end
+        else
+            screen.write(key)
         end
     end
   end
