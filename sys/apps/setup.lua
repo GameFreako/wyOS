@@ -12,6 +12,10 @@ end
 
 settings.load(".wyos")
 
+sleep(1)
+
+multishell.setTitle(multishell.getFocus(), "Setup")
+
 local sx, sy = screen.getSize();
 
 local function typeOut(text, time)
@@ -143,11 +147,11 @@ typeOut("Would you like to restart setup?", 1.5)
 local restart = awaitInput(nil, "bool")
 if restart then
     settings.save(".wyos")
-    os.run({}, "/sys/apps/setup.lua")
+    multishell.launch({}, "/sys/apps/setup.lua")
     os.queueEvent("terminate")
 else
     settings.set("setup", true)
     settings.save(".wyos")
-    os.run({}, "/sys/apps/home.lua")
+    multishell.launch({}, "/sys/apps/home.lua")
     os.queueEvent("terminate")
 end

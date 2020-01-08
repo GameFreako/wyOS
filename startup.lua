@@ -24,7 +24,12 @@ os.loadAPI("/sys/apis/sha256.lua")
 
 
 options = {}
-if not fs.exists(".wyos") then
+if fs.exists(".wyos") then
+    settings.load(".wyos")
+    options["setup"] = settings.get("setup")
+    options["monitor"] = settings.get("monitor")
+    options["monitormode"] = settings.get("monitormode")
+else
     -- no settings exist, assume defaults and begin setup mode
     options["setup"] = true
     options["password"] = nil
@@ -32,11 +37,6 @@ if not fs.exists(".wyos") then
     options["network"] = nil
     options["monitor"] = nil
     options["monitormode"] = 1
-else
-    settings.load(".wyos")
-    options["setup"] = true
-    options["monitor"] = settings.get("monitor")
-    options["monitormode"] = settings.get("monitormode")
 end
 
 if monitorMode == 3 then
