@@ -39,16 +39,16 @@ end
 
 if monitorMode == 3 then
     if options["setup"] == true then
-        os.run({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
+        multishell.launch({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
     else
-        os.run({}, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
+        multishell.launch({}, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
     end
     os.queueEvent("terminate")
 else
     if options["setup"] == true then
-        os.run({}, "/sys/apps/home.lua")
+        multishell.launch({}, "/sys/apps/home.lua")
     else
-        os.run({}, "/sys/apps/setup.lua")
+        multishell.launch({}, "/sys/apps/setup.lua")
     end
     os.queueEvent("terminate")
 end
