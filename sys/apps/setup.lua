@@ -7,6 +7,7 @@ if args[1] == "MONITOR" then
 else
     screen = term
 end
+require("/sys/apis/sha256.lua")
 
 settings.load(".wyos")
 
@@ -41,7 +42,7 @@ local function awaitInput(prein, type)
             if #input > 0 then
                 screen.setCursorBlink(false)
                 screen.clearLine()
-                screen.setCursorPos(1, 1)
+                screen.setCursorPos(1, sy)
                 screen.write(">")
                 return input
             else
@@ -64,8 +65,16 @@ local function awaitInput(prein, type)
             end
         end
     elseif event == "char" then
-        input = input..key
-        screen.write(key)
+        if not type == "password" then
+            input = input..key
+            local cx, cy = screen.getCursorPos()
+            if cx > 3 then
+                screen.setCursorPos(cx-1, cy)
+                screen.write('*' .. key)
+            else
+                screen.write(key)
+            end
+        end
     end
   end
 end
@@ -89,11 +98,11 @@ typeOut("Please type a computer label.", 0.5)
 sleep(0.5)
 os.setComputerLabel(awaitInput(os.getComputerLabel()))
 typeOut("Please type a network password.", 0.5)
-settings.set("netpassword", sha256(awaitInput(nil, "pass")))
+settings.set("netpassword", sha256(awaitInput(nil, "password")))
 typeOut("Please type a user name.", 0.5)
 settings.set("username", awaitInput("admin"))
 typeOut("Please type a login password.", 0.5)
-settings.set("logpassword", sha256(awaitInput(nil, "pass")))
+settings.set("logpassword", sha256(awaitInput(nil, "password")))
 typeOut("Would you like to use Monitor Mode? (true/false)", 0.5)
 settings.set("monitormode", awaitInput(nil, "bool"))
 if settings.get("monitormode") == true then
