@@ -1,6 +1,6 @@
 local sha256 = _G.sha256
 
-ocal args = {...}
+local args = {...}
 if args[1] == "MONITOR" then
     screen = peripheral.wrap(args[2])
     if not screen then
