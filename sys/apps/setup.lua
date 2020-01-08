@@ -1,4 +1,6 @@
-local args = {...}
+local sha256 = _G.sha256
+
+ocal args = {...}
 if args[1] == "MONITOR" then
     screen = peripheral.wrap(args[2])
     if not screen then
@@ -6,11 +8,6 @@ if args[1] == "MONITOR" then
     end
 else
     screen = term
-end
-if require then
-    require("/sys/apis/sha256.lua")
-else
-    os.loadAPI("/sys/apis/sha256.lua")
 end
 
 settings.load(".wyos")
