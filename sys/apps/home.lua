@@ -1,3 +1,4 @@
+local multishell = _G.multishell
 local args = {...}
 if args[1] == "MONITOR" then
     screen = peripheral.wrap(args[2])
