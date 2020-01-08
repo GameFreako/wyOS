@@ -2,8 +2,7 @@
 -- If you would like to run programs on startup, please put them in the autorun folder.
 -- Scripts in the autorun folder run in the background, but the tab closes when they terminate. 
 
-term.clear()
-term.print("press C to disable wyOS boot")
+print("press C to disable wyOS boot")
 os.startTimer(5)
 while true do
     local event, a1, a2 = os.pullEvent()
@@ -17,17 +16,17 @@ end
 multishell.setTitle(1, "Starting...")
 
 -- load apis
-os.loadAPI("/sys/apis/jua")
-os.loadAPI("/sys/apis/k.lua")
-os.loadAPI("/sys/apis/w.lua")
-os.loadAPI("/sys/apis/r.lua")
+--os.loadAPI("/sys/apis/jua")
+--os.loadAPI("/sys/apis/k.lua")
+--os.loadAPI("/sys/apis/w.lua")
+--os.loadAPI("/sys/apis/r.lua")
 os.loadAPI("/sys/apis/sha256.lua")
 
 
 options = {}
 if not fs.exists(".wyos") then
     -- no settings exist, assume defaults and begin setup mode
-    options["setup"] = false
+    options["setup"] = true
     options["password"] = nil
     options["username"] = "admin"
     options["network"] = nil
@@ -41,13 +40,17 @@ else
 end
 
 if monitorMode == 3 then
-    multishell.launch({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
     if options["setup"] == true then
-        multishell.launch({}, "/sys/apps/setup", "MONITOR", options["monitor"])
+        multishell.launch({}, "/sys/apps/setup.lua", "MONITOR", options["monitor"])
+    else
+        multishell.launch({}, "/sys/apps/home.lua", "MONITOR", options["monitor"])
     end
+    os.queueEvent("terminate")
 else
-    multishell.launch({}, "/sys/apps/home.lua")
     if options["setup"] == true then
-        multishell.launch({}, "/sys/apps/setup")
+        multishell.launch({}, "/sys/apps/setup.lua")
+    else
+        multishell.launch({}, "/sys/apps/home.lua")
     end
+    os.queueEvent("terminate")
 end

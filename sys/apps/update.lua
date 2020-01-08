@@ -3,6 +3,8 @@ local url = "https://raw.githubusercontent.com/GameFreako/wyos/master/"
 local files = [
     "startup.lua",
     "sys/apps/setup.lua",
+    "sys/apps/home.lua",
+    "sys/apps/login.lua"
     "sys/apis/sha256.lua",
     "sys/apps/update.lua", -- installer is also updater
 ]

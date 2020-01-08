@@ -9,21 +9,17 @@ else
 end
 
 -- this is how there is a logout button in multishell
--- but this does a heck lot more
--- This is also the netdaemon and is pretty much the kernal or crap and what not.
+-- but is also the network manager, and does general things for the operating system.
+multishell = multishell
 
-launch("rom/programs/shell.lua")
+multishell.launch({}, "/rom/programs/shell.lua")
 multishell.setTitle(multishell.getCurrent(), "Logout")
 
 while true do
-    local event, arg1, arg2, arg3, arg4 = os.pullEventRaw()
-    if (event == "terminate") then
+    local event, arg1, arg2, arg3, arg4 = os.pullEvent()
+    if (event == "term_click") then
         if (multishell.getFocus() == multishell.getCurrent()) then
-            os.reboot() -- this should never be able to happen, but just in case it does...
-        elseif (multishell.getTitle(multishell.getFocus()) == "Console") then
-            -- no just no
-        else
-            multishell.closeTab(multishell.getFocus())
+            logout()
         end
     end
 end
