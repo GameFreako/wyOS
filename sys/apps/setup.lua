@@ -13,8 +13,7 @@ settings.load(".wyos")
 local sx, sy = screen.getSize();
 
 local function typeOut(text, time)
-    local x, y = screen.getCursorPos()
-    screen.setCursorPos(1, y)
+    screen.setCursorPos(1, sy-5)
     screen.clearLine()
     if not time then time = 2 end
     local lap = time/text:len()
