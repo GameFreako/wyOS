@@ -57,5 +57,6 @@ else
     else
         multishell.launch({}, "/sys/apps/setup.lua")
     end
+    printError(nil, 0)
     os.queueEvent("terminate")
 end
