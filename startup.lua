@@ -19,6 +19,7 @@ end
 --os.loadAPI("/sys/apis/w.lua")
 --os.loadAPI("/sys/apis/r.lua")
 os.loadAPI("/sys/apis/sha256.lua")
+os.loadAPI("/sys/apis/core.lua")
 
 
 options = {}

@@ -13,8 +13,6 @@ end
 print("please wait")
 sleep(2)
 
-local multishell = _G.multishell
-
 local shellid = os.run({}, "/rom/programs/shell.lua")
 if multishell then
     multishell.setFocus(shellid)
