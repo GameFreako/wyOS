@@ -1,4 +1,3 @@
-local multishell = _G.multishell
 local args = {...}
 if args[1] == "MONITOR" then
     screen = peripheral.wrap(args[2])
@@ -13,6 +12,7 @@ end
 -- but is also the network manager, and does general things for the operating system.
 print("please wait")
 sleep(2)
+local multishell = _G.multishell
 
 local shellid = multishell.launch({}, "/rom/programs/shell.lua")
 multishell.setFocus(shellid)
