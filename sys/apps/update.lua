@@ -4,9 +4,9 @@ local files = [
     "startup.lua",
     "sys/apps/setup.lua",
     "sys/apps/home.lua",
-    "sys/apps/login.lua"
+    "sys/apps/login.lua",
     "sys/apis/sha256.lua",
-    "sys/apps/update.lua", -- installer is also updater
+    "sys/apps/update.lua",
 ]
 
 local function install()
