@@ -20,7 +20,7 @@ end
 --os.loadAPI("/sys/apis/r.lua")
 os.loadAPI("/sys/apis/sha256.lua")
 os.loadAPI("/sys/apis/core.lua")
-os.loadAPI("/rom/programs/multishell.lua")
+os.loadAPI("/rom/programs/advanced/multishell.lua")
 
 
 options = {}
